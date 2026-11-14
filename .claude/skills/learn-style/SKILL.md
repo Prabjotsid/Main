@@ -1,6 +1,6 @@
 ---
 name: learn-style
-description: Learn a video editing style from reference videos (links or files) and design images, measure it in numbers (cuts per 10 s, shot length, caption words and position, font type and weight, hex colours, transition frames, zooms, words per minute, and the sound design: loudness, music, sound effects landing on cuts), and write or update the project skill `my-style` as "do X when Y" rules. Use this whenever the user runs /learn-style, shares reels, shorts, TikToks, YouTube links, video files or design screenshots and wants to copy, match, study, break down or "learn" how they are edited, or asks to create or update my-style, even if they never say the word "skill".
+description: Learn a video editing style from reference videos (links or files) and design images, measure it in numbers (cuts per 10 s, shot length, caption words and position, font type and weight, hex colours, transition frames, zooms, words per minute, plus loudness, music and sound effects landing on cuts), and write or update the project skill `my-style` as "do X when Y" rules. Use this whenever the user runs /learn-style, shares reels, shorts, TikToks, YouTube links, video files or design screenshots and wants to copy, match, study, break down or "learn" how they are edited, or asks to create or update my-style, even if they never say the word "skill".
 ---
 
 # learn-style
