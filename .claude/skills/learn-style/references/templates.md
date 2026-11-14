@@ -46,6 +46,14 @@ captions or speech, no description of their logo, no frames.
 | Distinct text colours | 2 | |
 | Top / bottom clear margin (% of height) | 12 / 20 | grid |
 | Text elements on screen at once (max) | 2 | |
+| Loudness integrated (LUFS) / true peak (dBTP) | -14.2 / -1.0 | listen.py |
+| Loudness range (LU) | 4.1 | listen.py |
+| Music: present / tempo (bpm) / level under voice (dB) | yes / 96 / ~14 | listen.py, sheet |
+| Sound effects per 10 s (not speech) | 2.5 | ~ timeline + sheet |
+| Cuts with a sound within 100 ms (%) / chance (%) | 85 / 40 | listen.py |
+| Sound vs cut, median offset (ms) | 30 early | listen.py |
+| Effect kinds and where they land | likely whoosh on topic change, pop on caption | ~ model guess, checked on sheet |
+| First non-speech sound at (s) | 0.4 | timeline |
 
 ## Technique notes
 
@@ -116,11 +124,16 @@ Each rule: **Do X when Y.** Number in the rule, range and support in brackets.
 ### Pace
 - Speak at about 170 words per minute when recording; trim pauses longer than 0.4 s. (160-180, 3 of 3)
 
+### Sound
+- Put a short effect on the cut when the topic changes, landing within 40 ms of the cut. (85 % of cuts have a sound, chance 40 %, 2 of 3)
+- Keep the music about 14 dB under the voice when someone is speaking. (12-16, 2 of 3)
+- Master to about -14 LUFS with true peak under -1 dBTP. (-15 to -13.5, 3 of 3)
+
 ### Logo
 - Place the logo <where and how big the references place theirs> when <when they show it>. Use the user's logo file only.
 
 ## Not from the references
-- Their wording, hooks, logos, handles, footage and music are not part of this style.
+- Their wording, hooks, logos, handles, footage, music tracks and sound effect files are not part of this style.
 
 ## References
 - `references/<slug>.md` - one per reference

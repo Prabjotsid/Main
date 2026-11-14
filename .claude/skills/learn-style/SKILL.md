@@ -1,6 +1,6 @@
 ---
 name: learn-style
-description: Learn a video editing style from reference videos (links or files) and design images, measure it in numbers (cuts per 10 s, shot length, caption words and position, font type and weight, hex colours, transition frames, zooms, words per minute), and write or update the project skill `my-style` as "do X when Y" rules. Use this whenever the user runs /learn-style, shares reels, shorts, TikToks, YouTube links, video files or design screenshots and wants to copy, match, study, break down or "learn" how they are edited, or asks to create or update my-style, even if they never say the word "skill".
+description: Learn a video editing style from reference videos (links or files) and design images, measure it in numbers (cuts per 10 s, shot length, caption words and position, font type and weight, hex colours, transition frames, zooms, words per minute, and the sound design: loudness, music, sound effects landing on cuts), and write or update the project skill `my-style` as "do X when Y" rules. Use this whenever the user runs /learn-style, shares reels, shorts, TikToks, YouTube links, video files or design screenshots and wants to copy, match, study, break down or "learn" how they are edited, or asks to create or update my-style, even if they never say the word "skill".
 ---
 
 # learn-style
@@ -38,7 +38,7 @@ When done: summarise my-style on one page + 3 things you're unsure about.
 What carries over to `my-style` is how the edit is built: timing, sizes,
 positions, counts, motion. What never carries over is what they made: their
 sentences, hooks, jokes or caption text; their logos, watermarks, handles or
-brand names as design elements; their frames, clips, music or images. In
+brand names as design elements; their frames, clips, music, sound effect files or images. In
 practice:
 
 - Describe a caption as "3 words, all caps, one word highlighted", never by
@@ -62,6 +62,11 @@ writing `my-style`. If the user wants to carry on without them, write
 borrow the reference's hex codes, and do not use a logo you were not handed.
 
 ## Steps
+
+When the user is editing their own video rather than learning from a
+reference, the same scripts check the edit against `my-style`: run
+`frames.py`, `transcribe.py` and `listen.py` on their export and compare the
+numbers with the rules, sound included.
 
 Scripts live in `scripts/` next to this file. Run them by full path. Work in
 `.learn-style/<slug>/` at the project root, one folder per reference, where
@@ -106,7 +111,45 @@ python3 <skill>/scripts/transcribe.py .learn-style/<slug>/source.mp4 --out .lear
 words in the hook. Use `--model tiny` for a quick pass or `--language` if
 detection is wrong. No speech is a valid result; record it.
 
-### 4. Look, and measure what scripts cannot
+### 4. Listen and measure the sound
+
+You cannot hear, so do not describe how a reference sounds from the picture
+or the transcript. `listen.py` uses earshot (the `earshot` skill in this
+project) to hear it for you:
+
+```bash
+python3 <skill>/scripts/listen.py .learn-style/<slug>/source.mp4 --out .learn-style/<slug>
+```
+
+Run it after `frames.py`, because it checks sound against the cuts found
+there. It writes `sound.json` (loudness in LUFS, true peak, loudness range,
+whether there is a steady music beat and its tempo, sound events per 10 s,
+the share of cuts with a sound on them and how many ms early or late it
+lands, silences), `sound_timeline.txt` (what is heard, second by second) and
+`sound_sheet.png` (open it: sounds, loudness and cuts on one picture).
+
+How to read it:
+
+- Loudness and sync numbers are measurements; trust them.
+- Names of sounds ("whoosh", "pop", "UI") are a model's guess and are often
+  wrong on voice and music. Report them as "likely" and check against the
+  sheet.
+- In a talking reel most "sound events" are syllables of speech. To find
+  sound effects, look in the timeline for events that sit on a cut or a
+  caption change and are not marked VOICE, and count those per 10 s.
+- The sync stats include a "chance" value: what random placement would
+  score. A hit rate only means something when it is clearly above chance.
+- Music is copied as technique only: "music bed about 14 dB under the voice,
+  dips on the hook line", never which track it is.
+
+For questions the script does not answer (is a whoosh used on topic changes?
+does the music duck under speech?) use the earshot commands directly as the
+`earshot` skill describes, for example `earshot describe <file> --start a
+--end b` on one moment. If `listen.py` prints `NO_EARSHOT` or fails, write
+"sound not measured" in the notes and carry on; never fill sound rows by
+guessing.
+
+### 5. Look, and measure what scripts cannot
 
 Read the frames with your own eyes. For each item below write a number. When
 a value is judged by eye, mark it `~` so the reader knows.
@@ -122,7 +165,9 @@ a value is judged by eye, mark it `~` so the reader knows.
 | Transitions | From sheets + `cuts.json`: share of hard cuts, length in frames of the rest, and what kind (dissolve, whip, zoom-through, wipe). |
 | Zooms | From `cuts.json`: share of shots with a push-in, % and % per second; punch-in cuts and their scale (e.g. 1.15x). Confirm on sheets. |
 | Text layout | Top and bottom margins kept clear (% of height), where titles sit versus captions, how many text elements are on screen at once. |
-| Hook | What changes in the first 3 s, in numbers: cuts, words spoken, when the first caption and first motion appear. |
+| Hook | What changes in the first 3 s, in numbers: cuts, words spoken, when the first caption and first motion appear, and the first sound that is not speech. |
+| Sound effects | From `sound_timeline.txt` + `sound_sheet.png`: effects per 10 s (not speech), which moments get one (cut, caption pop, zoom, topic change), and how many ms before or after the cut they land. |
+| Music and levels | From `sound.json`: integrated LUFS, loudness range, music present or not, tempo if a beat was found, and how far the music sits under the voice (compare section LUFS with and without speech). |
 
 For **design images** (thumbnails, carousels, mood boards) there is no cut to
 measure. Record layout as percentages, text size as % of height, font class
@@ -133,7 +178,7 @@ Only write down what you saw. If only two references show a pattern, say
 "2 of 3". If something could not be measured (no captions in that reference,
 transition too fast to read at 12 fps), say that instead of filling the gap.
 
-### 5. Brand
+### 6. Brand
 
 Collect from the user: fonts (caption font and weight, title font if
 different), colours as hex (text, accent/highlight, outline or box,
@@ -141,7 +186,7 @@ background), and the logo file. Ask only for what is missing, in one
 question. Copy the logo file to `.claude/skills/my-style/assets/` under its
 own name. See rule 2 above for what to do when something is not provided.
 
-### 6. Write `my-style`
+### 7. Write `my-style`
 
 Read `references/templates.md` for the exact layout of both files, then write:
 
@@ -162,7 +207,7 @@ contradicts it). Then list what changed: every rule added, removed, or whose
 number moved, as `old -> new`, plus new notes files. Put the same list at the
 top of `.claude/skills/my-style/references/CHANGELOG.md` with today's date.
 
-### 7. Report back
+### 8. Report back
 
 Finish with, in this order:
 
