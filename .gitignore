@@ -1,0 +1,3 @@
+# learn-style work folder: holds reference footage, never commit
+.learn-style/
+__pycache__/
