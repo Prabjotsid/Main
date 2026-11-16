@@ -14,10 +14,20 @@ Last updated: 16 Nov 2026
 - Folder rule set: `reference/`, `raw/`, `export/` at the top of the project
   (on the Mac: `~/Desktop/editing/...`). `download.py` keeps a copy of every
   reference in `reference/`.
-- First reference downloaded in the cloud session of 16 Nov:
-  `reference/reel-DcYVYYno2GZ.mp4` (Instagram reel DcYVYYno2GZ, 89 s, 9:16,
-  30 fps). Not measured yet. The cloud copy is temporary; download again
-  from the link if it is gone.
+- Six reference reels downloaded from Instagram on 16 Nov into `reference/`
+  (cloud copies are temporary; the owner was sent each file; download again
+  from `https://www.instagram.com/reel/<id>/` if gone). None measured yet:
+  | File | Shape | Length |
+  |---|---|---|
+  | `reel-DcYVYYno2GZ.mp4` | 1080x1920 | 89.0 s |
+  | `reel-DRHCZoLkhZy.mp4` | 1920x1080 (wide) | 12.8 s |
+  | `reel-DKr2NCtT0DC.mp4` | 1080x1920 | 30.8 s |
+  | `reel-DUMEuGUklxE.mp4` | 1080x1920 | 10.2 s |
+  | `reel-CucNmOTAGCO.mp4` | 720x1280 | 7.5 s |
+  | `reel-DX66rPHpvn_.mp4` | 1080x1920 | 9.1 s |
+  The owner has not yet said whether these are one style or several, or
+  which to use for `my-style`. Lengths vary a lot (7.5 s to 89 s) and one is
+  wide, so ask before averaging them.
 - Cloud environment "Default": setup script installs PyTorch, earshot, yt-dlp
   and faster-whisper; network access is unrestricted.
 - Scripts tested on a synthetic 14 s reel only.
