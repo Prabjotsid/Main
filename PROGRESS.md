@@ -25,9 +25,22 @@ Last updated: 16 Nov 2026
   | `reel-DUMEuGUklxE.mp4` | 1080x1920 | 10.2 s |
   | `reel-CucNmOTAGCO.mp4` | 720x1280 | 7.5 s |
   | `reel-DX66rPHpvn_.mp4` | 1080x1920 | 9.1 s |
-  The owner has not yet said whether these are one style or several, or
-  which to use for `my-style`. Lengths vary a lot (7.5 s to 89 s) and one is
-  wide, so ask before averaging them.
+  First measurements (16 Nov, `frames.py` + `transcribe.py`, checked only on
+  an overview of shot frames; captions, colours and sound not measured yet):
+  | Reel | What it is | Cuts / 10 s | Median shot | Speech |
+  |---|---|---|---|---|
+  | `CucNmOTAGCO` | one dark moody shot, slow 10 % push-in, no audio track | 0 | 7.5 s | none |
+  | `DKr2NCtT0DC` | talking tutorial about a big serif text hook | 2.6 | 0.9 s | 191 wpm |
+  | `DRHCZoLkhZy` | wide; person walking, location changes every step | 24.3 | 0.33 s | none |
+  | `DUMEuGUklxE` | moody street shots, warm/teal look | 2.9 | 2.6 s | none |
+  | `DX66rPHpvn_` | slow close-ups with large serif quote text | 2.2 | 2.4 s | 159 wpm |
+  | `DcYVYYno2GZ` | tutorial: word-by-word captions over cinematic clips | 1.35 | 2.4 s | 196 wpm |
+  These are several different styles, and two are tutorials about a
+  technique rather than examples of it. Do not average them.
+- Owner asked (16 Nov) for their raw footage to be edited into a "cinematic
+  viral reel for Instagram" using the references. Blocked: `raw/` in the
+  cloud session was empty (their footage is on the Mac). Waiting for the
+  footage and for which reference look to follow.
 - Cloud environment "Default": setup script installs PyTorch, earshot, yt-dlp
   and faster-whisper; network access is unrestricted.
 - Scripts tested on a synthetic 14 s reel only.
