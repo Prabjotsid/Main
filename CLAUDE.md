@@ -31,6 +31,13 @@ Nothing that exists only inside a session survives. So before stopping:
 - `.claude/skills/learn-style/` measures an editing style from references.
 - `.claude/skills/earshot/` lets Claude listen to audio (third-party, pinned;
   see its `SOURCE.md`).
+- `.claude/skills/remotion-*/` (13 skills) make videos in code with Remotion
+  (React). Start from `remotion-best-practices`, which routes to the rest.
+- `.claude/skills/hyperframes*/`, `media-use`, `figma`, `slideshow`,
+  `style-sampling`, `reverse-any-video`, `remotion-to-hyperframes` make
+  videos from HTML with HyperFrames. Start from `hyperframes`.
+- `THIRD_PARTY_SKILLS.md` lists where every outside skill came from, its
+  commit and licence. Do not edit those skill folders by hand.
 - `.claude/skills/my-style/` is the owner's style, written by `learn-style`.
   Commit it every time it changes.
 - `.learn-style/` is the work folder for downloaded reference footage. It is
@@ -48,5 +55,14 @@ Nothing that exists only inside a session survives. So before stopping:
   base image.
 - YouTube and Instagram usually refuse downloads from cloud sessions. When a
   link fails, ask the owner for the video file; do not use logins or cookies.
+- When making a video, follow `my-style` (once it exists) for cuts, captions,
+  transitions, zooms and sound, whichever tool renders it.
+- HyperFrames sends usage statistics to HeyGen by default. The owner has not
+  opted in: run its commands with `HYPERFRAMES_NO_TELEMETRY=1 DO_NOT_TRACK=1`
+  set, and skip the "usage beacon" and "feedback report" steps its skills
+  mention, unless the owner says otherwise.
+- Paid services in the HyperFrames `media-use` skill (HeyGen, ElevenLabs,
+  Gemini) need the owner's own keys. Ask before using any of them, and never
+  put a key in a file.
 - The owner is not a programmer. Explain in plain words and give exact
   commands to copy when they need to run something.
