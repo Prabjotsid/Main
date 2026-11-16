@@ -40,11 +40,22 @@ Nothing that exists only inside a session survives. So before stopping:
   commit and licence. Do not edit those skill folders by hand.
 - `.claude/skills/my-style/` is the owner's style, written by `learn-style`.
   Commit it every time it changes.
-- `.learn-style/` is the work folder for downloaded reference footage. It is
-  ignored by git on purpose: it is other people's content and must never be
-  committed.
-- Large video files do not belong in git. If the owner's own footage or
-  exports need to persist, ask where they want them kept.
+- Video files live in three folders at the top of the project (the owner's
+  rule, 16 Nov 2026). On the owner's Mac the project folder is
+  `~/Desktop/editing`, so these are `Desktop/editing/reference` and so on:
+  - `reference/` every reference reel or design image, named `<slug>.mp4`.
+  - `raw/` the owner's own raw footage.
+  - `export/` every finished or edited video.
+  Always read from and save to these folders; never leave a video anywhere
+  else. Their contents are ignored by git on purpose (large files, and
+  references are other people's content), so they exist only on the computer
+  the session runs on.
+- `.learn-style/` holds working files for analysing a reference (frames,
+  sheets, numbers). Ignored by git; can be rebuilt from `reference/`.
+- A cloud session cannot reach the owner's Desktop. In a cloud session, use
+  the same three folders inside the project, send the owner every video they
+  should keep so they can save it into the matching Desktop folder, and say
+  clearly that the cloud copy is temporary.
 
 ## Things to know
 

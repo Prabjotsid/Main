@@ -79,6 +79,12 @@ Scripts live in `scripts/` next to this file. Run them by full path. Work in
 python3 <skill>/scripts/download.py "<link or file path>" --out .learn-style/<slug>
 ```
 
+The script also keeps a copy of the video as `reference/<slug>.mp4` in the
+project folder. That is the owner's library of reference reels; the
+`.learn-style/<slug>/` folder only holds working files (frames, sheets,
+numbers) and can be rebuilt from that copy. When the owner hands you a file,
+look for it in `reference/` first.
+
 If it prints `NEED_FILE` (login needed, site unreachable, or anything else),
 do not try cookies, logins or other workarounds. Ask the user to send the
 video file for that reference, say which link it was and why, and carry on
