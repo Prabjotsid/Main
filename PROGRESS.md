@@ -46,9 +46,16 @@ Last updated: 16 Nov 2026
   - It offers three directions (A Ember, B Slate, C Paper) and 7 questions.
   - Step 4 is NOT started. Do not write `my-style` or edit footage until the
     owner approves the sheet and answers the questions.
-- Earlier ask, still open: edit the owner's raw footage into a cinematic
-  Instagram reel. Blocked: `raw/` in the cloud was empty (footage is on the
-  Mac). Needs the clips attached, or a session run on the Mac.
+- Owner's reel request (16 Nov, later): turn their new raw video into an
+  Instagram Reel. Their instructions: cut every silence longer than 0.1 s
+  (tighter than the sheet's 0.4 s; theirs wins, update the sheet to match);
+  follow the approved brand sheet; add captions, background music and motion
+  graphics; use anything useful from `reference/` (technique only); show a
+  storyboard for review BEFORE editing; after approval export to `export/`.
+  Not started, blocked twice: no raw video had reached the cloud session
+  (`raw/` empty, nothing attached), and the brand sheet was still unapproved
+  with its 7 questions unanswered. Music must be a track the owner has the
+  rights to; the references' music cannot be reused.
 - Cloud environment "Default": setup script installs PyTorch, earshot, yt-dlp
   and faster-whisper; network access is unrestricted.
 - Scripts tested on a synthetic 14 s reel only.
