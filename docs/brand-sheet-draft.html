@@ -1,0 +1,328 @@
+<title>Reel Style Sheet Draft</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=Manrope:wght@500;700&family=Archivo:wdth,wght@125,800&family=Space+Grotesk:wght@500&display=swap">
+<style>
+/* Layout: one dark reading column, like a grading suite. Measurements sit in a
+   mono "readout" column beside plain-language findings; 9:16 frames show placement. */
+:root{
+  color-scheme: dark;
+  --ink:#14110f;        /* page ground: warm near-black, from the references' shadows */
+  --panel:#1d1916;      /* raised surface */
+  --line:#352e28;       /* rules and borders */
+  --paper:#ece4d8;      /* main text */
+  --dim:#a39686;        /* secondary text */
+  --amber:#cea97c;      /* measured highlight tone, used as the one accent */
+  --ember:#956026;      /* measured mid tone */
+  --ok:#8fb894; --warn:#e0b25c; --low:#d98b7a;   /* confidence marks */
+  --display:"Instrument Serif","Iowan Old Style",Georgia,serif;
+  --body:"Inter Tight","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:16px;line-height:1.55;
+  padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;line-height:1.05}
+h1{font-size:clamp(44px,8vw,84px);letter-spacing:-.01em}
+h1 em{color:var(--amber)}
+h2{font-size:clamp(30px,5vw,44px)}
+h3{font-size:24px}
+p{margin:0;max-width:66ch}
+.lede{font-size:19px;color:var(--paper)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.status{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--amber);color:var(--amber);padding:6px 12px;border-radius:999px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;align-self:flex-start}
+header{display:flex;flex-direction:column;gap:18px}
+section{display:flex;flex-direction:column;gap:22px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:620px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:400}
+td.n,.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.finding{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:28px;padding-top:22px;border-top:1px solid var(--line)}
+.finding>div{min-width:0;display:flex;flex-direction:column;gap:10px}
+.finding ul,.rules ul,.q ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+.readout{background:var(--panel);border-radius:6px;padding:14px 16px;font-family:var(--mono);font-size:13px;line-height:1.7;color:var(--paper)}
+.readout b{color:var(--amber);font-weight:600}
+.conf{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
+.conf.hi{color:var(--ok)} .conf.mid{color:var(--warn)} .conf.lo{color:var(--low)}
+.swatches{display:flex;flex-wrap:wrap;gap:10px}
+.sw{display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:11.5px;color:var(--dim)}
+.sw i{display:block;width:74px;height:48px;border-radius:4px;border:1px solid var(--line)}
+.rules{background:var(--panel);border-radius:8px;padding:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px}
+.rules>div{display:flex;flex-direction:column;gap:10px;min-width:0}
+.rules h3{color:var(--amber)}
+.dirs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px}
+.dir{display:flex;flex-direction:column;gap:14px;min-width:0}
+.phone{position:relative;aspect-ratio:9/16;width:100%;max-width:300px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.phone .safe{position:absolute;left:0;right:0;border:0 dashed rgba(255,255,255,.28);font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:rgba(255,255,255,.55);padding:4px 8px;text-transform:uppercase}
+.phone .safe.t{top:0;height:12%;border-bottom-width:1px}
+.phone .safe.b{bottom:0;height:20%;border-top-width:1px;display:flex;align-items:flex-end}
+.cap{position:absolute;left:8%;right:8%;color:#fff;line-height:.95}
+.a{background:radial-gradient(120% 80% at 70% 18%,#b98a55 0,#5b4027 38%,#1a1310 78%)}
+.a .cap{top:17%;font-family:"Instrument Serif",Georgia,serif}
+.a .s{font-size:clamp(15px,4.6vw,19px);display:block}
+.a .b{font-size:clamp(46px,15vw,66px);display:block;font-style:italic;color:#f3dcb8}
+.b2{background:linear-gradient(175deg,#27323a 0,#1b2227 45%,#0d1012 100%)}
+.b2 .cap{top:20%;font-family:"Bodoni Moda",Georgia,serif;text-align:center}
+.b2 .s{font-family:"Manrope",Arial,sans-serif;font-size:11px;letter-spacing:.32em;text-transform:uppercase;display:block;margin-bottom:10px;color:#c9d6dc}
+.b2 .b{font-size:clamp(40px,13vw,58px);display:block}
+.c{background:linear-gradient(160deg,#d8cfc2 0,#b9ad9c 50%,#8a7f70 100%)}
+.c .cap{top:50%;transform:translateY(-50%);font-family:"Archivo",Arial,sans-serif;font-stretch:125%;font-weight:800;color:#15120f;text-transform:uppercase}
+.c .b{font-size:clamp(30px,10vw,44px);display:block;line-height:.92}
+.c .s{font-family:"Space Grotesk",Arial,sans-serif;font-weight:500;font-size:12px;text-transform:none;display:block;margin-top:10px;letter-spacing:.02em}
+.dir dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;font-size:14px}
+.dir dt{font-family:var(--mono);font-size:11.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;padding-top:2px}
+.dir dd{margin:0}
+.q{border:1px solid var(--amber);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.q li{padding-left:4px}
+small,.note{color:var(--dim);font-size:14px}
+@media (max-width:720px){.finding{grid-template-columns:minmax(0,1fr)}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <span class="status">Draft for your review &middot; nothing is final</span>
+  <h1>Your reel style, <em>in numbers</em></h1>
+  <p class="lede">I measured the six reference reels you sent, looked for what they share, and turned that into a draft style for you. The references are inspiration only: no wording, footage, logo or exact layout of theirs is carried over. Read the findings, pick a direction, and answer the questions at the end.</p>
+</header>
+
+<section>
+  <span class="eyebrow">What I studied</span>
+  <h2>Six reels, four different kinds of video</h2>
+  <p>They are not one style. Two are moody footage with no voice, one is close-up footage with large quote text, one is a fast location montage, and two are tutorials that explain a technique. So "in common" below means what repeats across kinds, and I say how many reels each point comes from.</p>
+  <div class="scroll"><table>
+    <tr><th>Reel</th><th>Kind</th><th>Shape</th><th>Length</th><th>Cuts / 10 s</th><th>Typical shot</th><th>Voice</th></tr>
+    <tr><td class="n">CucNmOTAGCO</td><td>one dark, moody shot</td><td class="n">9:16</td><td class="n">7.5 s</td><td class="n">0</td><td class="n">7.5 s</td><td>none (no audio track)</td></tr>
+    <tr><td class="n">DUMEuGUklxE</td><td>moody street shots</td><td class="n">9:16</td><td class="n">10.2 s</td><td class="n">2.9</td><td class="n">2.6 s</td><td>none, music only</td></tr>
+    <tr><td class="n">DX66rPHpvn_</td><td>close-ups with large quote text</td><td class="n">9:16</td><td class="n">9.1 s</td><td class="n">2.2</td><td class="n">2.4 s</td><td>voice-over</td></tr>
+    <tr><td class="n">DRHCZoLkhZy</td><td>walking montage, location changes each step</td><td class="n">16:9</td><td class="n">12.8 s</td><td class="n">24.3</td><td class="n">0.33 s</td><td>none, music only</td></tr>
+    <tr><td class="n">DKr2NCtT0DC</td><td>tutorial, talking to camera</td><td class="n">9:16</td><td class="n">30.8 s</td><td class="n">2.6</td><td class="n">0.9 s</td><td>191 words/min</td></tr>
+    <tr><td class="n">DcYVYYno2GZ</td><td>tutorial, voice over clips</td><td class="n">9:16</td><td class="n">89.0 s</td><td class="n">1.35</td><td class="n">2.4 s</td><td>196 words/min</td></tr>
+  </table></div>
+  <p class="note">How to read confidence: <span class="conf hi">measured</span> comes from a script and I checked it on frames. <span class="conf mid">by eye</span> is my reading of frames with a 10% grid. <span class="conf lo">uncertain</span> means the tools could not settle it.</p>
+</section>
+
+<section>
+  <span class="eyebrow">Findings</span>
+  <h2>What the references have in common</h2>
+
+  <div class="finding">
+    <div><h3>Cuts and silences</h3>
+      <ul>
+        <li>Almost every cut is a plain hard cut. Dissolves and wipes are rare.</li>
+        <li>In the three calm, cinematic reels a shot lasts about two and a half seconds.</li>
+        <li>When someone speaks, they speak fast and the gaps are trimmed to under half a second.</li>
+        <li>The montage is the exception: it holds still for 3 seconds, then cuts about three times a second.</li>
+      </ul></div>
+    <div><div class="readout">
+      hard cuts <b>53 of 56</b> transitions (95%)<br>
+      cinematic shot length <b>2.4&ndash;2.6 s</b> median (3 reels)<br>
+      montage <b>3.0 s hold</b>, then a cut every <b>0.30&ndash;0.33 s</b><br>
+      speech <b>191&ndash;196</b> words/min overall, <b>216&ndash;248</b> while speaking<br>
+      pause length <b>0.38&ndash;0.42 s</b> median (2 tutorials)<br>
+      first word at <b>0.0 s</b> in 2 of 3 voiced reels
+    </div>
+    <span class="conf hi">measured</span>
+    <span class="conf lo">uncertain: jump cuts inside one continuous talking shot are hard for the script to see, so the talking reels may have more cuts than counted</span></div>
+  </div>
+
+  <div class="finding">
+    <div><h3>Zooms and punch-ins</h3>
+      <ul>
+        <li>These references barely zoom. Only one reel moves in, and it does so very slowly across the whole shot.</li>
+        <li>No talking part uses a punch-in on a key word.</li>
+        <li>Movement comes from the camera and the subject, not from added zoom.</li>
+      </ul></div>
+    <div><div class="readout">
+      slow push-in <b>10% over 7.5 s</b> (1.3% per second), 1 of 6 reels<br>
+      punch-in cuts on speech <b>0</b> found<br>
+      3 size jumps in the montage are match cuts on the walker, not zooms
+    </div><span class="conf hi">measured</span></div>
+  </div>
+
+  <div class="finding">
+    <div><h3>Captions and on-screen text</h3>
+      <ul>
+        <li>Text is white with no outline, no box and no coloured highlight word. Emphasis comes from size.</li>
+        <li>Two reels use a high-contrast display serif, stacked in mixed sizes: one huge word, small words tucked around it. Words arrive one at a time and each shot gets a new stack.</li>
+        <li>One reel shows a single small lowercase word at a time, dead centre, under a heavy slanted capital title.</li>
+        <li>Lines are short: one to three words. No emojis anywhere.</li>
+      </ul></div>
+    <div><div class="readout">
+      white only <b>3 of 4</b> reels with text<br>
+      big word height <b>~7&ndash;9%</b> of frame; small words <b>~2&ndash;3%</b><br>
+      serif stack sits <b>~12&ndash;35%</b> from the top<br>
+      word-by-word caption sits <b>~51%</b> from the top, <b>~2%</b> tall<br>
+      words per line <b>1&ndash;3</b>; most on screen at once <b>~6&ndash;7</b><br>
+      build speed <b>5 words in 1.5 s</b> (1 reel)
+    </div><span class="conf mid">by eye, from gridded frames</span>
+    <span class="conf lo">uncertain: exact font names. I can name the family of look, not the typeface</span></div>
+  </div>
+
+  <div class="finding">
+    <div><h3>Motion graphics, emojis, pop-ups, B-roll</h3>
+      <ul>
+        <li>No emojis, stickers or pop-up bubbles in any of the six.</li>
+        <li>Both tutorials show a phone mock-up with a screen recording on a plain background.</li>
+        <li>One reel frames its clips inside a camera-viewfinder overlay (record dot, exposure numbers). One shows a rounded picture-in-picture card. One uses a letterboxed clip with widely spaced capitals.</li>
+        <li>B-roll is scenery: three quick clips of about 0.8 s, then longer holds.</li>
+      </ul></div>
+    <div><div class="readout">
+      emojis / stickers <b>0 of 6</b><br>
+      phone mock-up <b>2 of 2</b> tutorials<br>
+      viewfinder overlay <b>1</b> &middot; picture-in-picture card <b>1</b><br>
+      quick B-roll burst <b>3 &times; 0.8 s</b> (1 reel)
+    </div><span class="conf mid">by eye</span></div>
+  </div>
+
+  <div class="finding">
+    <div><h3>Colour and overall look</h3>
+      <ul>
+        <li>All six lean warm. None is cool or neutral.</li>
+        <li>The moody ones are dark on purpose: whites never get bright, highlights sit at a dull amber, shadows are almost black.</li>
+        <li>The quote reel is rich orange-brown and heavily saturated. The tutorials are brighter and plainer.</li>
+      </ul>
+      <div class="swatches">
+        <span class="sw"><i style="background:#0E0B0E"></i>#0E0B0E shadows</span>
+        <span class="sw"><i style="background:#2B231B"></i>#2B231B mids</span>
+        <span class="sw"><i style="background:#826B4A"></i>#826B4A highlights</span>
+        <span class="sw"><i style="background:#956026"></i>#956026 warm mids</span>
+        <span class="sw"><i style="background:#CEA97C"></i>#CEA97C warm highs</span>
+      </div>
+      <small>Average tones measured in the references, shown as observations. They are not your palette.</small></div>
+    <div><div class="readout">
+      warm tilt (red minus blue) <b>+0.02 to +0.34</b>, 6 of 6<br>
+      moody pair: brightness <b>3%</b> and <b>19%</b>; whites capped at <b>22%</b> and <b>63%</b><br>
+      quote reel: saturation <b>0.64</b>, whites <b>85%</b><br>
+      tutorials: brightness <b>39&ndash;46%</b>, saturation <b>0.12&ndash;0.22</b><br>
+      black level <b>0&ndash;13%</b>
+    </div><span class="conf hi">measured, 2 frames per second</span></div>
+  </div>
+
+  <div class="finding">
+    <div><h3>Music, sound effects, volume</h3>
+      <ul>
+        <li>Every reel with sound is music-led, and all five land at almost the same loudness.</li>
+        <li>Volume stays very even from start to finish; nothing gets quiet.</li>
+        <li>The tutorials probably add whooshes and pops, but I could not show that sounds are placed on the cuts.</li>
+      </ul></div>
+    <div><div class="readout">
+      loudness <b>&minus;14.1 to &minus;14.6 LUFS</b>, 5 of 5<br>
+      loudness range <b>1.1&ndash;3.5 LU</b><br>
+      loudest peak <b>&minus;7.3 to +0.2 dBTP</b> (the +0.2 one clips; not something to copy)<br>
+      sound on a cut within 0.1 s: no better than chance in <b>4 of 5</b>
+    </div><span class="conf hi">loudness measured</span>
+    <span class="conf lo">uncertain: which sounds are effects (a model guesses), and how far music sits under the voice (I can't separate them)</span></div>
+  </div>
+
+  <div class="finding">
+    <div><h3>The hook: first 3 seconds</h3>
+      <ul>
+        <li>Half the reels have text on screen from the very first frame.</li>
+        <li>Voiced reels start talking immediately and fit about ten words into three seconds.</li>
+        <li>Most do not cut in the first three seconds. They hold one strong picture and let text or a reveal do the moving.</li>
+      </ul></div>
+    <div><div class="readout">
+      text from frame one <b>3 of 6</b><br>
+      speech from <b>0.0 s</b> in 2 of 3; <b>10&ndash;11 words</b> in the first 3 s<br>
+      first cut after 3 s (or never) <b>4 of 6</b><br>
+      movement in the hook: text building word by word, or a split-screen reveal
+    </div><span class="conf hi">measured</span> <span class="conf mid">text timing by eye</span></div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Proposal</span>
+  <h2>Draft style for you</h2>
+  <p>These rules take the habits above and set them as your own numbers. Fonts, colours and logo are left open on purpose: those are yours to give, and I won't fill them in by guessing.</p>
+  <div class="rules">
+    <div><h3>Hook</h3><ul>
+      <li>Put your text on screen from the first frame.</li>
+      <li>Hold the opening picture; make the first cut between 1.5 and 3 s.</li>
+      <li>If you speak, start at 0.0 s and say no more than 10 words in the first 3 s.</li></ul></div>
+    <div><h3>Cuts</h3><ul>
+      <li>Use hard cuts only. Save one soft transition for the very end.</li>
+      <li>Hold each shot 2 to 3 s when the mood is calm.</li>
+      <li>Allow one fast burst per reel: 3 clips of about 0.8 s each.</li>
+      <li>Trim every pause in speech to 0.4 s or less.</li></ul></div>
+    <div><h3>Zooms</h3><ul>
+      <li>Use a slow push-in of 6 to 10% across a whole shot, on about 1 shot in 3.</li>
+      <li>Do not punch in on words.</li></ul></div>
+    <div><h3>Text</h3><ul>
+      <li>One idea per shot, 6 words at most, 1 to 3 words per line.</li>
+      <li>Make one word large (about 8% of frame height) and the rest small (about 2.5%).</li>
+      <li>Bring words in one at a time, in step with the voice or the beat.</li>
+      <li>Keep the top 12% and bottom 20% of the frame free of text, where Instagram puts its own buttons.</li>
+      <li>No outlines, boxes, emojis or stickers.</li></ul></div>
+    <div><h3>Colour</h3><ul>
+      <li>Grade warm.</li>
+      <li>Cap the whites at about 85% brightness and keep blacks near 3 to 5%.</li>
+      <li>Keep one look for the whole reel.</li></ul></div>
+    <div><h3>Sound</h3><ul>
+      <li>Master to &minus;14 LUFS with peaks under &minus;1 dBTP.</li>
+      <li>Let music lead; keep volume even from start to end.</li>
+      <li>Add an effect only where something visibly happens.</li></ul></div>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Choose one</span>
+  <h2>Three directions that would feel like yours</h2>
+  <p>Each keeps the measured habits but changes the type, colour and where text sits, so the result does not look like any one reference. The frames are placeholders I drew, with example words of my own. Dashed bands are the areas kept clear.</p>
+  <div class="dirs">
+    <div class="dir">
+      <div class="phone a"><span class="safe t">kept clear</span><div class="cap"><span class="s">this is where</span><span class="b">your</span><span class="s">line goes</span></div><span class="safe b">kept clear</span></div>
+      <h3>A. Ember</h3>
+      <dl><dt>Feel</dt><dd>Warm, dark, intimate. Closest to the moody references.</dd>
+      <dt>Text</dt><dd>Slanted serif, one big word, upper left.</dd>
+      <dt>Colour</dt><dd>Amber highlights, near-black shadows, cream text.</dd>
+      <dt>Suits</dt><dd>Evening footage, close-ups, food, city at dusk.</dd></dl>
+    </div>
+    <div class="dir">
+      <div class="phone b2"><span class="safe t">kept clear</span><div class="cap"><span class="s">a short label</span><span class="b">Your line</span></div><span class="safe b">kept clear</span></div>
+      <h3>B. Slate</h3>
+      <dl><dt>Feel</dt><dd>Cool-shadowed and quiet, with warm skin tones. Your own twist: the references are all warm.</dd>
+      <dt>Text</dt><dd>Upright classic serif, centred, with a small spaced label above.</dd>
+      <dt>Colour</dt><dd>Blue-grey shadows, white text.</dd>
+      <dt>Suits</dt><dd>Travel, landscapes, architecture, overcast light.</dd></dl>
+    </div>
+    <div class="dir">
+      <div class="phone c"><span class="safe t" style="color:rgba(0,0,0,.55);border-color:rgba(0,0,0,.3)">kept clear</span><div class="cap"><span class="b">Your<br>line<br>here</span><span class="s">with a small line under it</span></div><span class="safe b" style="color:rgba(0,0,0,.55);border-color:rgba(0,0,0,.3)">kept clear</span></div>
+      <h3>C. Paper</h3>
+      <dl><dt>Feel</dt><dd>Bright, bold, graphic. Furthest from the references.</dd>
+      <dt>Text</dt><dd>Wide heavy capitals in dark ink, stacked at the centre.</dd>
+      <dt>Colour</dt><dd>Soft, light, slightly faded picture, dark text.</dd>
+      <dt>Suits</dt><dd>Daylight footage, talking to camera, tips and lists.</dd></dl>
+    </div>
+  </div>
+  <p class="note">The typefaces shown are free examples to make the directions visible. If you already have brand fonts, they replace these.</p>
+</section>
+
+<section>
+  <span class="eyebrow">Before I finalize</span>
+  <h2>What I need from you</h2>
+  <div class="q">
+    <ol>
+      <li><b>What are your reels about, and what is in your raw footage?</b> Talking to camera, scenery with music, or both? The references split both ways.</li>
+      <li><b>Which direction: A, B, C, or a mix?</b> Say what you'd change.</li>
+      <li><b>Your brand:</b> fonts, colours as hex codes, and a logo file, if you have them. If you don't, say so and I'll offer choices for you to pick from.</li>
+      <li><b>Captions:</b> which language, and do you want every spoken word captioned or only key lines?</li>
+      <li><b>Length:</b> the references run 7.5 to 89 s. Earlier you mentioned 45 to 60 s. Which do you want?</li>
+      <li><b>Music:</b> will you add a trending sound inside Instagram, or should the exported video carry its own music? If its own, I need a track you have the rights to.</li>
+      <li><b>The fast walking montage:</b> do you want that as a format too? It needs footage shot for it, so I've left it out of the rules.</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <span class="eyebrow">Least certain</span>
+  <h2>Three things to double-check</h2>
+  <div class="finding" style="grid-template-columns:minmax(0,1fr)"><div><ul>
+    <li><b>Caption sizes and positions</b> were read by eye from small frames, so treat them as within a few percent.</li>
+    <li><b>Sound effects and voice-to-music balance</b> could not be measured reliably. Only overall loudness is solid.</li>
+    <li><b>The sample is small and mixed.</b> Some points rest on one or two reels. More references of the one kind you want would firm up the numbers.</li>
+  </ul></div></div>
+</section>
+
+</div>

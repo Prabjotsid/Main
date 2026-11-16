@@ -25,28 +25,49 @@ Last updated: 16 Nov 2026
   | `reel-DUMEuGUklxE.mp4` | 1080x1920 | 10.2 s |
   | `reel-CucNmOTAGCO.mp4` | 720x1280 | 7.5 s |
   | `reel-DX66rPHpvn_.mp4` | 1080x1920 | 9.1 s |
-  The owner has not yet said whether these are one style or several, or
-  which to use for `my-style`. Lengths vary a lot (7.5 s to 89 s) and one is
-  wide, so ask before averaging them.
+  First measurements (16 Nov, `frames.py` + `transcribe.py`, checked only on
+  an overview of shot frames; captions, colours and sound not measured yet):
+  | Reel | What it is | Cuts / 10 s | Median shot | Speech |
+  |---|---|---|---|---|
+  | `CucNmOTAGCO` | one dark moody shot, slow 10 % push-in, no audio track | 0 | 7.5 s | none |
+  | `DKr2NCtT0DC` | talking tutorial about a big serif text hook | 2.6 | 0.9 s | 191 wpm |
+  | `DRHCZoLkhZy` | wide; person walking, location changes every step | 24.3 | 0.33 s | none |
+  | `DUMEuGUklxE` | moody street shots, warm/teal look | 2.9 | 2.6 s | none |
+  | `DX66rPHpvn_` | slow close-ups with large serif quote text | 2.2 | 2.4 s | 159 wpm |
+  | `DcYVYYno2GZ` | tutorial: word-by-word captions over cinematic clips | 1.35 | 2.4 s | 196 wpm |
+  These are several different styles, and two are tutorials about a
+  technique rather than examples of it. Do not average them.
+- Owner's 4-step request (16 Nov): 1 save references, 2 analyse what they
+  share, 3 brand sheet for review ("inspired, not copied; ask before
+  finalizing"), 4 proceed only after approval. Steps 1-3 done:
+  - Full findings and the draft style are in `docs/brand-sheet-draft.html`,
+    also published privately at https://claude.ai/artifact/HRpzrDLYgTyiLs5gJoWGo8
+    (to update it from another session, pass that link as `url`).
+  - It offers three directions (A Ember, B Slate, C Paper) and 7 questions.
+  - Step 4 is NOT started. Do not write `my-style` or edit footage until the
+    owner approves the sheet and answers the questions.
+- Earlier ask, still open: edit the owner's raw footage into a cinematic
+  Instagram reel. Blocked: `raw/` in the cloud was empty (footage is on the
+  Mac). Needs the clips attached, or a session run on the Mac.
 - Cloud environment "Default": setup script installs PyTorch, earshot, yt-dlp
   and faster-whisper; network access is unrestricted.
 - Scripts tested on a synthetic 14 s reel only.
 
 ## Next step
 
-Run `/learn-style` for the first time on real references to create
-`.claude/skills/my-style/`. Planned request:
-
-- References: one style, about 3 videos plus design images
-- Focus: captions, cuts, transitions, text layout
-- Format: 9:16 talking reels, 45-60 s
-- Finish with a one-page summary of my-style and 3 things that are uncertain
+After the owner approves the sheet: write `.claude/skills/my-style/` from it
+(rules as "do X when Y", one notes file per reference using the numbers in
+the sheet; re-run `frames.py`, `transcribe.py`, `listen.py` on `reference/`
+if `.learn-style/` is gone), then edit the raw footage to those rules and
+save the result in `export/`.
 
 ## Waiting on the owner
 
-- The reference videos (files are most reliable; links often fail from the
-  cloud) and design images.
-- Brand: fonts, colours as hex codes, logo file.
+- Approval of the brand sheet, a direction (A, B, C or a mix), and answers
+  to its 7 questions: what the reels are about / what the raw footage is,
+  brand fonts + hex colours + logo, caption language and coverage, target
+  length, music source, and whether the walking montage is wanted.
+- The raw clips (attach in chat, or run a session from `~/Desktop/editing`).
 - Decision: make this repository private before brand details are committed?
 
 ## Not done yet / open points
