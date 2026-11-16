@@ -6,6 +6,10 @@
 Local file  -> copied to <out>/source.<ext>
 URL         -> downloaded with yt-dlp to <out>/source.mp4
 
+A copy of the video is also kept as reference/<slug>.<ext> in the project
+folder (the owner's library of reference reels), where <slug> is the name of
+the <out> folder. Use --reference-dir to change the folder, or "" to skip.
+
 Never uses cookies, logins or credentials. If the site wants a login, or the
 download fails for any other reason, the script stops and prints a line that
 starts with NEED_FILE so the person can be asked for the file instead.
@@ -58,6 +62,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("source", help="video URL or path to a local video file")
     ap.add_argument("--out", required=True, help="work folder for this reference")
+    ap.add_argument("--reference-dir", default="reference",
+                    help="folder that keeps a copy of every reference video (default: reference)")
     args = ap.parse_args()
 
     out = Path(args.out)
@@ -94,6 +100,15 @@ def main() -> int:
 
     info.update(probe(dest))
     info["file"] = str(dest)
+    if args.reference_dir and "error" not in info:
+        ref_dir = Path(args.reference_dir)
+        ref_dir.mkdir(parents=True, exist_ok=True)
+        keep = ref_dir / f"{out.name}{dest.suffix}"
+        if local.is_file() and local.resolve() == keep.resolve():
+            pass                                   # the file already lives in reference/
+        else:
+            shutil.copy2(dest, keep)
+        info["reference_copy"] = str(keep)
     (out / "source.json").write_text(json.dumps(info, indent=2))
     print(json.dumps(info, indent=2))
     return 0 if "error" not in info else 5

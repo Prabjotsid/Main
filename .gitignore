@@ -1,3 +1,11 @@
 # learn-style work folder: holds reference footage, never commit
 .learn-style/
 __pycache__/
+
+# Media folders: videos stay on the computer, never in git (too large; references are other people's content)
+reference/*
+raw/*
+export/*
+!reference/.gitkeep
+!raw/.gitkeep
+!export/.gitkeep

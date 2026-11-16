@@ -11,6 +11,13 @@ Last updated: 16 Nov 2026
 - Remotion (13) and HyperFrames (9) official skills added, unchanged, with
   sources and licences in `THIRD_PARTY_SKILLS.md`. Files only: neither tool
   has been run yet, and no video project exists yet.
+- Folder rule set: `reference/`, `raw/`, `export/` at the top of the project
+  (on the Mac: `~/Desktop/editing/...`). `download.py` keeps a copy of every
+  reference in `reference/`.
+- First reference downloaded in the cloud session of 16 Nov:
+  `reference/reel-DcYVYYno2GZ.mp4` (Instagram reel DcYVYYno2GZ, 89 s, 9:16,
+  30 fps). Not measured yet. The cloud copy is temporary; download again
+  from the link if it is gone.
 - Cloud environment "Default": setup script installs PyTorch, earshot, yt-dlp
   and faster-whisper; network access is unrestricted.
 - Scripts tested on a synthetic 14 s reel only.
@@ -44,5 +51,5 @@ Run `/learn-style` for the first time on real references to create
 - `real-sound` (the soundtrack-building companion to earshot) is not
   installed. Ask if wanted.
 - Mac setup: tools are in the conda environment `whisper`; earshot and
-  PyTorch are not yet installed there, and this repository is not yet cloned
-  there.
+  PyTorch are not yet installed there. This repository is not yet cloned
+  there; it should be cloned as `~/Desktop/editing` so the folder rule holds.
