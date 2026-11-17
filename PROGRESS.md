@@ -1,6 +1,6 @@
 # Where things stand
 
-Last updated: 16 Nov 2026
+Last updated: 17 Nov 2026
 
 ## Done
 
@@ -59,6 +59,19 @@ Last updated: 16 Nov 2026
 - Cloud environment "Default": setup script installs PyTorch, earshot, yt-dlp
   and faster-whisper; network access is unrestricted.
 - Scripts tested on a synthetic 14 s reel only.
+
+## Moving to the Mac (decided 17 Nov)
+
+The owner's five raw clips are about 1 GB each; uploads to the cloud arrived
+as empty 135-byte placeholders and shrinking them was too difficult, so work
+moves to the Mac. Steps given to the owner: turn `~/Desktop/editing` into a
+copy of this repository (`git init`, add the remote, `git pull origin main`),
+then `bash setup-mac.sh`. `setup-mac.sh` is UNTESTED on a Mac (written in a
+Linux cloud session). The Mac reported an Intel processor earlier, where
+PyTorch and earshot may not install; that step is optional and the script
+carries on without it. If this is the first session on the Mac: check
+`ffmpeg`, `yt-dlp`, `node`, `python -c "import faster_whisper"` and
+`earshot doctor`, and fix what is missing before anything else.
 
 ## Next step
 
