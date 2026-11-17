@@ -60,22 +60,18 @@ Last updated: 17 Nov 2026
   and faster-whisper; network access is unrestricted.
 - Scripts tested on a synthetic 14 s reel only.
 
-## Moving to the Mac (decided 17 Nov)
+## Working on the Mac (since 17 Nov)
 
-The owner's five raw clips are about 1 GB each; uploads to the cloud arrived
-as empty 135-byte placeholders and shrinking them was too difficult, so work
-moves to the Mac. Steps given to the owner: turn `~/Desktop/editing` into a
-copy of this repository (`git init`, add the remote, `git pull origin main`),
-then `bash setup-mac.sh`. The repository is now private, so the Mac needs a
-GitHub login first (`conda install -c conda-forge gh`, `gh auth login`,
-`gh auth setup-git`). First run on the Mac (17 Nov) stopped at
-`conda activate` with an 'unbound variable' error caused by `set -u`; that
-line was removed. `setup-mac.sh` is otherwise UNTESTED on a Mac (written in a
-Linux cloud session). The Mac reported an Intel processor earlier, where
-PyTorch and earshot may not install; that step is optional and the script
-carries on without it. If this is the first session on the Mac: check
-`ffmpeg`, `yt-dlp`, `node`, `python -c "import faster_whisper"` and
-`earshot doctor`, and fix what is missing before anything else.
+The owner's raw clips are about 1 GB each and could not be uploaded, so work
+moved to the Mac at `~/Desktop/editing` (a clone of this repository; GitHub
+login done with `gh`). `setup-mac.sh` ran there on 17 Nov with this result:
+ffmpeg, yt-dlp, Node and faster-whisper installed in the conda environment
+`whisper`; the three folders exist; **earshot FAILED to install** (Intel Mac,
+PyTorch most likely; the error text was not captured). So on the Mac sound is
+"not measured" unless earshot is fixed: run `earshot doctor`, and if it is
+missing, show the owner the pip error and decide together. Everything else
+in `learn-style` works without it. Not yet checked on the Mac: that the
+skills load and that `frames.py` / `transcribe.py` run.
 
 ## Next step
 
