@@ -66,7 +66,11 @@ The owner's five raw clips are about 1 GB each; uploads to the cloud arrived
 as empty 135-byte placeholders and shrinking them was too difficult, so work
 moves to the Mac. Steps given to the owner: turn `~/Desktop/editing` into a
 copy of this repository (`git init`, add the remote, `git pull origin main`),
-then `bash setup-mac.sh`. `setup-mac.sh` is UNTESTED on a Mac (written in a
+then `bash setup-mac.sh`. The repository is now private, so the Mac needs a
+GitHub login first (`conda install -c conda-forge gh`, `gh auth login`,
+`gh auth setup-git`). First run on the Mac (17 Nov) stopped at
+`conda activate` with an 'unbound variable' error caused by `set -u`; that
+line was removed. `setup-mac.sh` is otherwise UNTESTED on a Mac (written in a
 Linux cloud session). The Mac reported an Intel processor earlier, where
 PyTorch and earshot may not install; that step is optional and the script
 carries on without it. If this is the first session on the Mac: check
