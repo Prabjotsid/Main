@@ -64,8 +64,9 @@ Nothing that exists only inside a session survives. So before stopping:
 
 ## Things to know
 
-- This repository is public. Before committing brand details (fonts, colours,
-  logo) for the first time, remind the owner once.
+- This repository is private (the owner changed it on 17 Nov 2026), so brand
+  details can be committed. A new computer needs a GitHub login before it can
+  pull (`gh auth login`, then `gh auth setup-git`).
 - Tools (yt-dlp, faster-whisper, earshot, PyTorch) are installed by the cloud
   environment's setup script, not stored here. Python and ffmpeg are in the
   base image.

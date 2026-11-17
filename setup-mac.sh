@@ -8,7 +8,7 @@
 # into a conda environment called "whisper" and changes nothing else.
 # Safe to run again: it only adds what is missing.
 
-set -u
+# No 'set -u' here: conda's own activate scripts use unset variables and would stop the script.
 cd "$(dirname "$0")"
 
 say() { printf '\n== %s\n' "$1"; }
