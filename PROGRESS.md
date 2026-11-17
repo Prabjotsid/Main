@@ -37,25 +37,22 @@ Last updated: 17 Nov 2026
   | `DcYVYYno2GZ` | tutorial: word-by-word captions over cinematic clips | 1.35 | 2.4 s | 196 wpm |
   These are several different styles, and two are tutorials about a
   technique rather than examples of it. Do not average them.
-- Owner's 4-step request (16 Nov): 1 save references, 2 analyse what they
-  share, 3 brand sheet for review ("inspired, not copied; ask before
-  finalizing"), 4 proceed only after approval. Steps 1-3 done:
-  - Full findings and the draft style are in `docs/brand-sheet-draft.html`,
-    also published privately at https://claude.ai/artifact/HRpzrDLYgTyiLs5gJoWGo8
-    (to update it from another session, pass that link as `url`).
-  - It offers three directions (A Ember, B Slate, C Paper) and 7 questions.
-  - Step 4 is NOT started. Do not write `my-style` or edit footage until the
-    owner approves the sheet and answers the questions.
-- Owner's reel request (16 Nov, later): turn their new raw video into an
-  Instagram Reel. Their instructions: cut every silence longer than 0.1 s
-  (tighter than the sheet's 0.4 s; theirs wins, update the sheet to match);
-  follow the approved brand sheet; add captions, background music and motion
-  graphics; use anything useful from `reference/` (technique only); show a
-  storyboard for review BEFORE editing; after approval export to `export/`.
-  Not started, blocked twice: no raw video had reached the cloud session
-  (`raw/` empty, nothing attached), and the brand sheet was still unapproved
-  with its 7 questions unanswered. Music must be a track the owner has the
-  rights to; the references' music cannot be reused.
+- Brand sheet: the owner had no answers to its questions and asked Claude
+  (17 Nov) to decide for them. Claude chose direction "Ember", fonts
+  Instrument Serif + Inter Tight, cream `#F4E9D8` text with an amber
+  `#E0A458` accent word, every word captioned, 30-45 s, and no music track in
+  the export by default (owner adds a sound in Instagram) because no licensed
+  track exists. Logo is NOT SET. All of this is in
+  `.claude/skills/my-style/SKILL.md` (version 1), with one notes file per
+  reference. The sheet itself: `docs/brand-sheet-draft.html`, published at
+  https://claude.ai/artifact/HRpzrDLYgTyiLs5gJoWGo8. The owner can change any
+  of these choices.
+- Reel request (16 Nov), NOT started: turn the clips in `raw/` into an
+  Instagram Reel. Cut every silence longer than 0.1 s; follow `my-style`;
+  add captions, music and motion graphics; borrow technique only from
+  `reference/`; show a storyboard for approval BEFORE editing; then export
+  to `export/`. Nobody has looked at the raw clips yet, so what the reel is
+  about is unknown: transcribe them first and tell the owner what is there.
 - Cloud environment "Default": setup script installs PyTorch, earshot, yt-dlp
   and faster-whisper; network access is unrestricted.
 - Scripts tested on a synthetic 14 s reel only.
@@ -75,20 +72,15 @@ skills load and that `frames.py` / `transcribe.py` run.
 
 ## Next step
 
-After the owner approves the sheet: write `.claude/skills/my-style/` from it
-(rules as "do X when Y", one notes file per reference using the numbers in
-the sheet; re-run `frames.py`, `transcribe.py`, `listen.py` on `reference/`
-if `.learn-style/` is gone), then edit the raw footage to those rules and
-save the result in `export/`.
+On the Mac: transcribe the clips in `raw/` (`transcribe.py`), measure them
+(`frames.py`), then build the storyboard to `my-style` and show it to the
+owner. Edit and export only after they approve it.
 
 ## Waiting on the owner
 
-- Approval of the brand sheet, a direction (A, B, C or a mix), and answers
-  to its 7 questions: what the reels are about / what the raw footage is,
-  brand fonts + hex colours + logo, caption language and coverage, target
-  length, music source, and whether the walking montage is wanted.
-- The raw clips (attach in chat, or run a session from `~/Desktop/editing`).
-- Decision: make this repository private before brand details are committed?
+- Approval of the storyboard once it exists.
+- Optional: a logo, a music track they have the rights to, or changes to any
+  of the brand choices Claude made.
 
 ## Not done yet / open points
 
