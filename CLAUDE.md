@@ -52,6 +52,11 @@ Nothing that exists only inside a session survives. So before stopping:
   the session runs on.
 - `.learn-style/` holds working files for analysing a reference (frames,
   sheets, numbers). Ignored by git; can be rebuilt from `reference/`.
+- The owner chose (17 Nov 2026) to work on their Mac from `~/Desktop/editing`
+  rather than in the cloud, because raw clips are about 1 GB each and cannot
+  be uploaded. `setup-mac.sh` installs the tools there (conda environment
+  `whisper`); the owner runs `conda activate whisper` before starting Claude.
+  On the Mac, read and write `raw/`, `reference/` and `export/` directly.
 - A cloud session cannot reach the owner's Desktop. In a cloud session, use
   the same three folders inside the project, send the owner every video they
   should keep so they can save it into the matching Desktop folder, and say
